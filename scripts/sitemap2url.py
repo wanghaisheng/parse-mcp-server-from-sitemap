@@ -138,7 +138,8 @@ def save_url_details_csv(url_details, file_path):
 
 def main():
     setup_logging()
-    entry_url = input("请输入 sitemap 入口 URL: ").strip()
+    # entry_url = input("请输入 sitemap 入口 URL: ").strip()
+    entry_url='https://mcp.so/sitemap.xml'
     today = datetime.now().strftime('%Y-%m-%d')
     details_file = f"url_details.csv"
     existing_url_map = load_url_details_csv(details_file)
