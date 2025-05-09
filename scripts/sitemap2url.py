@@ -129,6 +129,8 @@ def save_url_details_csv(url_details, file_path):
     """
     保存url详情到CSV文件。
     """
+    os.makedirs(os.path.dirname(file_path), exist_ok=True)
+    
     with open(file_path, 'w', encoding='utf-8', newline='') as f:
         fieldnames = ['loc', 'lastmodified', 'added_date']
         writer = csv.DictWriter(f, fieldnames=fieldnames)
@@ -141,7 +143,9 @@ def main():
     # entry_url = input("请输入 sitemap 入口 URL: ").strip()
     entry_url='https://mcp.so/sitemap.xml'
     today = datetime.now().strftime('%Y-%m-%d')
-    details_file = f"url_details.csv"
+    data_dir = os.path.join(os.path.dirname(__file__), '../data')
+    os.makedirs(data_dir, exist_ok=True)    
+    details_file = os.path.join(data_dir, f"url_details{today}.txt")
     existing_url_map = load_url_details_csv(details_file)
     existing_url_date_map = {k: v['added_date'] for k, v in existing_url_map.items()}
     all_url_details = list(existing_url_map.values())
