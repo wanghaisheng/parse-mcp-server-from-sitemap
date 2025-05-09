@@ -143,9 +143,9 @@ def main():
     # entry_url = input("请输入 sitemap 入口 URL: ").strip()
     entry_url='https://mcp.so/sitemap.xml'
     today = datetime.now().strftime('%Y-%m-%d')
-    data_dir = os.path.join('.', '/data')
+    # data_dir = os.path.join('.', '/data')
     os.makedirs(data_dir, exist_ok=True)    
-    details_file = os.path.join(data_dir, f"url_details{today}.txt")
+    details_file = os.path.join('./data', f"url_details{today}.txt")
     existing_url_map = load_url_details_csv(details_file)
     existing_url_date_map = {k: v['added_date'] for k, v in existing_url_map.items()}
     all_url_details = list(existing_url_map.values())
