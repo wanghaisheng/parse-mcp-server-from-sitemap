@@ -144,7 +144,7 @@ def main():
     entry_url='https://mcp.so/sitemap.xml'
     today = datetime.now().strftime('%Y-%m-%d')
     # data_dir = os.path.join('.', '/data')
-    os.makedirs(data_dir, exist_ok=True)    
+    # os.makedirs(data_dir, exist_ok=True)    
     details_file = os.path.join('./data', f"url_details{today}.txt")
     existing_url_map = load_url_details_csv(details_file)
     existing_url_date_map = {k: v['added_date'] for k, v in existing_url_map.items()}
