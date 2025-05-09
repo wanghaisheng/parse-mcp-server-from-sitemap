@@ -1,0 +1,28 @@
+name: sitemap urls Report Analysis
+
+on:
+  schedule:
+    # 每天北京时间 2:00 运行
+    - cron: '0 14 * * *'
+    # 每周一北京时间 3:00 运行
+    - cron: '0 19 * * 1'
+    # 每月1号北京时间 4:00 运行
+    - cron: '0 20 1 * *'
+  workflow_dispatch:
+
+jobs:
+  run-report-analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+      - name: 设置Python环境
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: 安装依赖
+        run: |
+          pip install --upgrade pip
+      - name: 执行分析脚本
+        working-directory: ./scripts
+        run: python sitemapurlreport.py
